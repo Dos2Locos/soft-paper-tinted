@@ -36,6 +36,8 @@ If you install the 3rd-party plugin "Style Settings," I have a few style setting
   - Toggle the lower-right file details bar between blue and beige
 - **Make settings see-through**
   - Settings window at 90% opacity so you can see changes live
+- **Rainbow-Colored Folders**
+  - Switch from ACE-colored (5 hues) to full 11-color rainbow folders (snippet provided by Joel Anderson)
 
 <img width="857" height="596" alt="CleanShot 2026-02-15 at 18 48 07" src="https://github.com/user-attachments/assets/60d7c446-8871-4476-a5e7-ebd6c4b55f2a" />
 
