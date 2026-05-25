@@ -12,7 +12,7 @@ This is solely for Soft Paper lovers.
 <img width="600"  alt="soft-paper-theme" src="https://github.com/user-attachments/assets/fa89e237-79f3-4e54-91f2-8927da899f9b" />
 
 ## Rainbow Folders (NEW a/o 2026-05-23)
-Yes my friends, the oft-requested Rainbow Folders are now available under Style Settings. 
+Yes my friends, the oft-requested Rainbow Folders are now available under Style Settings. The default style is the ACE-colored folders. If you want rainbow-colored folders, you have to toggle on that setting within the Style Settings plugin.
 
 <img width="353" alt="soft-paper-rainbow-folders-light" src="https://github.com/user-attachments/assets/1dcffec1-2c67-422c-9c18-f4afed91a4d6" />
 
