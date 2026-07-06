@@ -20,6 +20,25 @@ name: Soft Paper
 id: soft-paper-dark-settings
 settings:
   -
+    id: sp-vault-tint-heading
+    title: Vault Accent Color (fork)
+    description: 'Color de acento configurable de esta bóveda. Afecta a todo lo que antes usaba el azul del tema como chrome de la interfaz: barra del selector de bóveda, marco/borde de la ventana, barra de título, barra de pestañas superior y barra de estado (si activas Make status bar blue). Personal y Trabajo guardan su propio color aquí para diferenciarse de un vistazo.'
+    type: heading
+    level: 1
+    collapsed: false
+  -
+    id: sp-vault-switcher-light
+    title: Color de acento (modo claro)
+    type: variable-color
+    format: hex
+    default: '#1A7DA4'
+  -
+    id: sp-vault-switcher-dark
+    title: Color de acento (modo oscuro)
+    type: variable-color
+    format: hex
+    default: '#11B7C5'
+  -
     id: sp-see-more
     title: The "See More" Settings
     type: heading
@@ -117,8 +136,8 @@ settings:
 :root {
   --sp-teal-link: #0AD1D0;
   --sp-teal-active: #0AD1D0; 
-  --sp-blue-light: #4B8FAB;
-  --sp-teal-dark: #1A9CAA;
+  --sp-blue-light: color-mix(in srgb, var(--sp-vault-switcher-color, #1A7DA4), black 18%);
+  --sp-teal-dark: color-mix(in srgb, var(--sp-vault-switcher-color, #11B7C5), black 18%);
   --sp-surface-gray: #232634;
   --sp-cream-light: #DDD0C6;
 }
@@ -264,6 +283,12 @@ settings:
     0px 30px 90px rgba(var(--ctp-crust), 0.2);
   
   /* Background colors */
+  --sp-vault-switcher-color: var(--sp-vault-switcher-light, #1A7DA4);
+  --sp-blue-light: color-mix(in srgb, var(--sp-vault-switcher-color), black 18%);
+  --interactive-accent: color-mix(in srgb, var(--sp-vault-switcher-color), black 18%);
+  --interactive-accent-hover: color-mix(in srgb, var(--sp-vault-switcher-color), black 28%);
+  --text-accent: var(--sp-vault-switcher-color);
+  --text-accent-hover: var(--sp-vault-switcher-color);
   --background-primary: rgb(var(--ctp-base));
   --background-primary-alt: rgb(var(--ctp-mantle));
   --background-secondary: rgb(var(--ctp-mantle));
@@ -389,6 +414,12 @@ settings:
   --color-base-100: rgb(var(--ctp-text));
   
   /* Background colors */
+  --sp-vault-switcher-color: var(--sp-vault-switcher-dark, #11B7C5);
+  --sp-teal-dark: color-mix(in srgb, var(--sp-vault-switcher-color), black 18%);
+  --interactive-accent: color-mix(in srgb, var(--sp-vault-switcher-color), black 18%);
+  --interactive-accent-hover: color-mix(in srgb, var(--sp-vault-switcher-color), black 28%);
+  --text-accent: var(--sp-vault-switcher-color);
+  --text-accent-hover: var(--sp-vault-switcher-color);
   --background-primary: rgb(var(--ctp-base));
   --background-primary-alt: rgb(var(--ctp-mantle));
   --background-secondary: rgb(var(--ctp-mantle));
@@ -553,8 +584,8 @@ body {
   --color-accent-1: rgb(var(--ctp-accent));
   --color-accent-2: rgba(var(--ctp-accent), 0.9);
   --text-selection: rgba(var(--ctp-accent), 0.25);
-  --interactive-accent: rgb(var(--ctp-accent));
-  --interactive-accent-hover: rgba(var(--ctp-accent), 0.9);
+  --interactive-accent: color-mix(in srgb, var(--sp-vault-switcher-color, #1A7DA4), black 18%);
+  --interactive-accent-hover: color-mix(in srgb, var(--sp-vault-switcher-color, #1A7DA4), black 28%);
   --text-accent: rgb(var(--ctp-accent));
   --text-accent-hover: rgb(var(--ctp-accent));
   --interactive-accent-rgb: var(--ctp-accent);
@@ -612,7 +643,7 @@ body {
   --tab-stacked-pane-width: var(--file-line-width);
   --anp-table-width-pct: 100%;
   --code-background: var(--background-secondary-alt);
-  --card-background-color: rgba(var(--ctp-accent), 1);
+  --card-background-color: var(--sp-vault-switcher-color, #1A7DA4);
   --tab-inactive-color: rgb(var(--ctp-mantle));
   --code-normal: var(--text-normal);
   --background-modifier-active: hsla(var(--color-accent-hsl), 0.1);
@@ -701,7 +732,7 @@ body {
   border: none;
   margin: var(--anp-card-layout-padding, 10px);
   margin-bottom: 0;
-  background-color: rgba(var(--ctp-accent), 1) !important;
+  background-color: var(--sp-vault-switcher-color, #1A7DA4) !important;
 }
 
 .workspace-ribbon.mod-left {
@@ -795,9 +826,9 @@ body {
   --tab-text-color: var(--text-faint);
   --tab-text-color-active: var(--text-muted);
   --tab-text-color-focused: var(--text-muted);
-  --tab-text-color-focused-active: #1A7DA4;
+  --tab-text-color-focused-active: var(--sp-vault-switcher-color, #1A7DA4);
   --tab-text-color-focused-highlighted: var(--text-normal);
-  --tab-text-color-focused-active-current: #1A7DA4;
+  --tab-text-color-focused-active-current: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 .theme-dark .workspace-split.mod-vertical.mod-root {
@@ -854,17 +885,17 @@ body {
 /* Light mode: Maintain blue background on sidebar tab hover with subtle shade change */
 .theme-light .mod-left-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
 .theme-light .mod-right-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
-  background-color: rgba(75, 143, 171, 0.92); /* Very subtle hover shade */
+  background-color: color-mix(in srgb, var(--sp-blue-light) 92%, transparent); /* Very subtle hover shade */
 }
 /* Light mode: Active sidebar tab hover — keep blue bg, slightly lighter */
 .theme-light .mod-left-split .workspace-tab-header.is-active:hover,
 .theme-light .mod-right-split .workspace-tab-header.is-active:hover {
-  background-color: #6097AE !important;
+  background-color: color-mix(in srgb, var(--sp-blue-light), white 12%) !important;
 }
 /* Dark mode: Active sidebar tab hover */
 .theme-dark .mod-left-split .workspace-tab-header.is-active:hover,
 .theme-dark .mod-right-split .workspace-tab-header.is-active:hover {
-  background-color: #1E8F9D !important;
+  background-color: color-mix(in srgb, var(--sp-teal-dark), black 8%) !important;
 }
 
 .workspace-tab-header-container-inner {
@@ -912,7 +943,7 @@ body,
 
 .theme-light .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
 .theme-light .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: #1A7DA4;
+  color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 .theme-dark .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
@@ -1013,13 +1044,13 @@ strong, .cm-strong {
 
 /* Colorful Frame (opacity 1) — stays consistent focused or unfocused */
 body {
-  --titlebar-background: rgb(var(--ctp-accent));
-  --titlebar-background-focused: rgb(var(--ctp-accent));
+  --titlebar-background: var(--sp-vault-switcher-color, #1A7DA4);
+  --titlebar-background-focused: var(--sp-vault-switcher-color, #1A7DA4);
   --titlebar-text-color: var(--background-primary);
   --titlebar-text-color-focused: var(--background-secondary-alt);
-  --colorful-frame-color: rgb(var(--ctp-accent));
+  --colorful-frame-color: var(--sp-vault-switcher-color, #1A7DA4);
   --anp-colorful-frame-opacity: 1;
-  background-color: rgba(var(--ctp-accent), 1);
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 /* Mobile: remove colorful frame bleed (overscroll, behind keyboard) */
@@ -1035,21 +1066,21 @@ body.is-mobile .mod-vertical .workspace-tabs {
 /* Sidebar tab header containers: blue background */
 .mod-left-split .workspace-tab-header-container,
 .mod-right-split .workspace-tab-header-container {
-  background-color: rgba(var(--ctp-accent), 1);
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 /* Force all panes to keep accent color when unfocused */
 .mod-root .workspace-tab-header-container {
-  background-color: rgb(var(--ctp-accent));
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 .mod-root .workspace-tabs.mod-top {
-  background-color: rgb(var(--ctp-accent));
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 .mod-left-split .workspace-tab-container,
 .mod-right-split .workspace-tab-container {
-  background-color: rgb(var(--ctp-accent));
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 /* Cream icons on blue: sidebar headers, titlebar, vault bar */
@@ -1188,7 +1219,7 @@ body.is-mobile .mod-vertical .workspace-tabs {
 /* Vault name bar */
 .workspace-drawer-vault,
 .workspace-sidedock-vault-profile {
-  background-color: rgba(var(--ctp-accent), 1);
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
 }
 
 body.theme-light:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher {
@@ -1231,12 +1262,12 @@ body.theme-dark:not(.is-mobile) .workspace-split.mod-left-split .workspace-sided
 }
 
 .theme-light.sp-status-bar-blue .status-bar {
-  background-color: rgba(var(--ctp-accent), 1);
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
   color: var(--sp-cream-light);
 }
 
 .theme-dark.sp-status-bar-blue .status-bar {
-  background-color: rgba(var(--ctp-accent), 1);
+  background-color: var(--sp-vault-switcher-color, #1A7DA4);
   color: var(--sp-surface-gray);
 }
 
