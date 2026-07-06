@@ -1,3 +1,25 @@
+# Soft Paper Tinted
+
+> Fork mantenido por [Dos2Locos](https://github.com/Dos2Locos) del [Soft Paper](https://github.com/nickmilo/soft-paper) original de Nick Milo. Añade un color de acento configurable por bóveda (vía Style Settings) para diferenciar visualmente distintas bóvedas de Obsidian que comparten el mismo tema. Ver la sección "Vault Accent Color (fork)" más abajo.
+
+## Vault Accent Color (fork)
+
+Este fork añade una sección nueva en **Ajustes → Style Settings → Vault Accent Color (fork)**, con dos selectores de color (modo claro / modo oscuro). Ese color sustituye el azul "sapphire" fijo del tema original en todos los elementos de "chrome" de la interfaz:
+
+- Barra del selector de bóveda (vault switcher)
+- Marco/borde de la ventana y barra de título
+- Barra de pestañas superior (activa e inactiva) y su estado de hover
+- Ribbon lateral y contenedor de pestañas
+- Barra de estado (si activas "Make status bar blue")
+- Botones de acción (`--interactive-accent`), con un tono ~18-28% más oscuro que el acento elegido
+- Texto/iconos de enlaces y de la pestaña activa (`--text-accent`)
+
+Como Style Settings guarda su configuración por bóveda (cada bóveda de Obsidian tiene su propia carpeta `.obsidian/`), puedes instalar este mismo tema en varias bóvedas y darle un color distinto a cada una para diferenciarlas de un vistazo, sin perder el resto de la identidad visual de Soft Paper.
+
+El fondo de página, los enlaces/tags de contenido y los callouts **no** se ven afectados — mantienen los colores originales de Soft Paper.
+
+---
+
 # Soft Paper
 A custom Obsidian theme to feel more reflective. 
 
